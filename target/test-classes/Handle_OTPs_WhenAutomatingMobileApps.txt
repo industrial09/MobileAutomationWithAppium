@@ -1,0 +1,31 @@
+I can think of 4 ways to handle OTPs (MFA).
+
+Remove OTP requirement for test accounts/test environments
+
+Allow static OTP for test accounts/test environments.
+
+Fetch OTP from DB or using API. There could be security issue here, but team should still try to do this.
+
+Fetch OTP from the real mobile device
+
+Many folks go with option 4, mainly because they don't get required support for 1, 2 and 3. May be because they think it would be simple through the UI. But it is not!
+
+Option 4 is the worst option.
+
+Why?
+
+From the app perspective, all it need is the OTP.
+
+The app doesn't even send the OTP on it's own. It's done by the backend notification service that can be validated using the API.
+
+Now, why it's a bad idea to fetch the OTP from the device. Here're the reasons:
+
+This flow has nothing to do with your app.
+
+This flow tie your test account with your device.
+
+This is not reliable. Prone to frequent failures.
+
+Different implementation needed for iOS and Android. Even for Android, there could be variations in the flow based on the OEM.
+
+So think twice before you go with option 4.

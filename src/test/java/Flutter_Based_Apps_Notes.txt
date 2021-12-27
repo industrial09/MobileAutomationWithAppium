@@ -1,0 +1,23 @@
+Flutter is a special case. You may observe issues with Appium, if used with UiAutomator2 or XCUITest driver. The primary issue is, many UI elements are not identifiable. Many a times long XPath have to be used. This is because all the element attributes used for UI elements in the Flutter app may not be visible to Appium UiAutomator2 or XCUITest driver.
+
+Appium has got a Flutter driver that may solve this issue, but it is in experimental phase. Here's the GitHub link: https://github.com/truongsinh/appium-flutter-driver
+
+With this driver, you may be able to use the Flutter's element attributes to find the elements. Since this is still in experimental phase, you may observe issues. Please do a small POC and see if this works for you.
+
+Here're the Flutter element attributes list: https://api.flutter.dev/flutter/flutter_driver/CommonFinders-class.html
+
+Also note that Flutter has got its own driver for automating flutter apps. It's called the "Flutter driver", but it only supports Dart language which can be alien to many of us. Here's the link: https://flutter.dev/docs/cookbook/testing/integration/introduction
+
+If you prefer, you can use this driver as well for automating your app. Consult with your dev.
+
+In short, these are your options:
+
+-> Appium UiAutomator2 or XCUITest driver
+
+-> Appium Flutter driver
+
+-> Flutter's Flutter driver
+
+At this point, I do not have any recommendations on which driver to use for Flutter apps. Use whichever works for you. You will need to talk with your dev/team and decide on your course.
+
+You can also consult Appium folks here by opening a ticket: https://github.com/appium/appium/issues

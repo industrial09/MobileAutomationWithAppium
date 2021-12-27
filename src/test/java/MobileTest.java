@@ -8,9 +8,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.FindsByAndroidUIAutomator;
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.TouchAction;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
+import io.appium.java_client.touch.TapOptions;
+import io.appium.java_client.touch.offset.ElementOption;
+import io.appium.java_client.touch.offset.PointOption;
 
 public class MobileTest {
 	//Way of defining locators for Web based mobile apps
@@ -41,11 +45,17 @@ public class MobileTest {
 		MobileTest mt = new MobileTest(driver);
 		System.out.println("Text gottten for visibility label is: "+ access.getText());
 		
-		MobileElement access = (MobileElement) driver.findElementById("android:id/action_bar");
-		String accessText = access.getText();
-		System.out.println(accessText);
+		MobileElement access = (MobileElement) driver.findElementByAccessibilityId("Accessibility");
+		TouchAction action = new TouchAction(driver);
+		action.tap(ElementOption.element(access)).perform();
+		//In this case a Mobile element is located using coordinates in X and Y
+		action.tap(PointOption.point(538, 416)).perform();
+		//Other way
+		action.tap(TapOptions.tapOptions().withElement(ElementOption.element(access))).perform();
+		//String accessText = access.getText();
+		//System.out.println(accessText);
 		
-		MobileElement access1 = (MobileElement) driver.findElementByAccessibilityId("Accessibility");
+		MobileElement access1 = (MobileElement) driver.findElementById("android:id/action_bar");
 		String accessText1 = access1.getText();
 		System.out.println(accessText1);
 		
